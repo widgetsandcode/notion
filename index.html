@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📅</text></svg>">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Today's Date</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your external stylesheet if applicable -->
+
+    <style>
+      body {
+        background-color: #f8f8f8;
+      }
+      
+      .date-container {
+        font-family: Courier New, Arial, Helvetica, sans-serif;
+        font-size: 36px;
+        color: #333;
+      }
+      
+      .container {
+        background-color: #333;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 25px;
+      }
+      
+      #circle {
+        height: 30px;
+        width: 30px;
+        background-color: #f8f8f8;
+        border-radius: 50%;
+      }
+      
+      #current_month {
+        background-color: #333;
+        color: white;
+        text-transform: uppercase;
+        margin-top: 15px;
+      } 
+      
+      #current_day {
+        font-size: 46px;
+        font-weight: bold;
+        margin-top: 10px;
+      } 
+    </style>
+
+    <script>
+        function displayCurrentDate() {
+
+        const moptions = { month: 'short' };
+        document.getElementById("current_month").innerText = new Date().toLocaleDateString('en-US', moptions);
+
+        const doptions = { day: 'numeric' };
+        document.getElementById("current_day").innerText = new Date().toLocaleDateString('en-US', doptions);
+
+        const woptions = { weekday: 'long' };
+        document.getElementById("current_weekday").innerText = new Date().toLocaleDateString('en-US', woptions);
+
+        }
+
+        // initial call
+       window.onload = displayCurrentDate;
+
+        // Call the function to display the current date when the page loads
+        setInterval(displayCurrentDate, 1000);
+    </script>
+</head>
+
+<body>
+  <center> 
+    <div class="date-container">
+    
+      <div class="container">
+        <div id="circle"></div>
+        <div id="current_month"></div>
+        <div id="circle"></div>
+      </div>
+      
+      <div id="current_day"></div>
+      
+      <div id="current_weekday"></div>
+    
+    </div>  
+  </center>
+</body>
+
+</html>
